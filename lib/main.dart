@@ -18,7 +18,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiProvider( 
       providers: [
         ChangeNotifierProvider.value(
           value: Auth(),
@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProxyProvider<Auth, Products>(
           builder: (ctx, auth, previousProducts) => Products(
                 auth.token,
+                auth.userId,
                 previousProducts == null ? [] : previousProducts.items,
               ),
         ),
